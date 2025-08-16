@@ -1,0 +1,111 @@
+/*
+ * define.h
+ *
+ * Created: 
+ * Author: 
+ *
+ * History
+ *
+ * 
+ */ 
+#define toYellow 0
+#define toBlue   1
+volatile char AttackTo = toYellow;
+ 
+//스위치 정의
+#define KeyLeft  (~PINL & 0x10)
+#define KeyRight (~PINL & 0x20)
+#define KeyEnter (~PINL & 0x40)
+
+//PWM 신호핀 정의
+#define PWM_0 2   //오른쪽 모터
+#define PWM_1 3   //뒷쪽 모터
+#define PWM_2 7   //좌측 모터
+#define PWM_3 8   //드리블러
+
+//모터 방향 정의
+#define madirF (PORTB |= 0x10)  //우측모터 정회전
+#define madirB (PORTB &= 0xEF)  //우측모터 역회전
+#define mbdirF (PORTB |= 0x20)  //뒷쪽모터 정회전
+#define mbdirB (PORTB &= 0xDF)  //뒷쪽모터 역회전
+#define mcdirF (PORTB |= 0x40)  //좌측모터 정회전
+#define mcdirB (PORTB &= 0xBF)  //좌측모터 역회전
+#define mddirF (PORTB |= 0x80)  //드리블러 정회전
+#define mddirB (PORTB &= 0x7F)  //드리블러 역회전
+
+//슈터 정의
+#define SHOOTERON (PORTH &= 0xF7)   //슈팅
+#define SHOOTEROFF (PORTH |= 0x08)
+
+//
+//초음파 센서 트리거 ON/OFF
+//
+#define TRIGER1ON (PORTC |= 0x02)   //우측
+#define TRIGER1OFF (PORTC &= 0xFD)
+#define TRIGER2ON (PORTC |= 0x04)   //후방
+#define TRIGER2OFF (PORTC &= 0xFB)
+#define TRIGER3ON (PORTC |= 0x08)   //좌측
+#define TRIGER3OFF (PORTC &= 0xF7)
+#define TRIGER4ON (PORTC |= 0x01)   //전방
+#define TRIGER4OFF (PORTC &= 0xFE)
+
+//
+//초음파 센서 감지 입력
+//
+#define ECHO1 (PINC & 0x20)   //우측
+#define ECHO2 (PINC & 0x40)   //후방
+#define ECHO3 (PINC & 0x80)   //좌측
+#define ECHO4 (PINC & 0x10)   //전방
+
+
+// For 2.2" TFT LCD With ILI9341.
+#define TFT_DC  28  //PA6
+#define TFT_CS  27  //PA5
+#define TFT_RST 29  //PA7
+
+//For SD Card
+#define TFT_WHITE 0xFFFF
+#define TFT_BLACK 0x0000
+#define TFT_RED   0xF800
+
+/* RGB 16-bit color table definition (RG565) */
+#define COLOR_BLACK          0x0000      /*   0,   0,   0 */
+#define COLOR_WHITE          0xFFFF      /* 255, 255, 255 */
+#define COLOR_BLUE           0x001F      /*   0,   0, 255 */
+#define COLOR_GREEN          0x07E0      /*   0, 255,   0 */
+#define COLOR_RED            0xF800      /* 255,   0,   0 */
+#define COLOR_NAVY           0x000F      /*   0,   0, 128 */
+#define COLOR_DARKBLUE       0x0011      /*   0,   0, 139 */
+#define COLOR_DARKGREEN      0x03E0      /*   0, 128,   0 */
+#define COLOR_DARKCYAN       0x03EF      /*   0, 128, 128 */
+#define COLOR_CYAN           0x07FF      /*   0, 255, 255 */
+#define COLOR_TURQUOISE      0x471A      /*  64, 224, 208 */
+#define COLOR_INDIGO         0x4810      /*  75,   0, 130 */
+#define COLOR_DARKRED        0x8000      /* 128,   0,   0 */
+#define COLOR_OLIVE          0x7BE0      /* 128, 128,   0 */
+#define COLOR_GRAY           0x8410      /* 128, 128, 128 */
+#define COLOR_GREY           0x8410      /* 128, 128, 128 */
+#define COLOR_SKYBLUE        0x867D      /* 135, 206, 235 */
+#define COLOR_BLUEVIOLET     0x895C      /* 138,  43, 226 */
+#define COLOR_LIGHTGREEN     0x9772      /* 144, 238, 144 */
+#define COLOR_DARKVIOLET     0x901A      /* 148,   0, 211 */
+#define COLOR_YELLOWGREEN    0x9E66      /* 154, 205,  50 */
+#define COLOR_BROWN          0xA145      /* 165,  42,  42 */
+#define COLOR_DARKGRAY       0x7BEF      /* 128, 128, 128 */
+#define COLOR_DARKGREY       0x7BEF      /* 128, 128, 128 */
+#define COLOR_SIENNA         0xA285      /* 160,  82,  45 */
+#define COLOR_LIGHTBLUE      0xAEDC      /* 172, 216, 230 */
+#define COLOR_GREENYELLOW    0xAFE5      /* 173, 255,  47 */
+#define COLOR_SILVER         0xC618      /* 192, 192, 192 */
+#define COLOR_LIGHTGRAY      0xC618      /* 192, 192, 192 */
+#define COLOR_LIGHTGREY      0xC618      /* 192, 192, 192 */
+#define COLOR_LIGHTCYAN      0xE7FF      /* 224, 255, 255 */
+#define COLOR_VIOLET         0xEC1D      /* 238, 130, 238 */
+#define COLOR_AZUR           0xF7FF      /* 240, 255, 255 */
+#define COLOR_BEIGE          0xF7BB      /* 245, 245, 220 */
+#define COLOR_MAGENTA        0xF81F      /* 255,   0, 255 */
+#define COLOR_TOMATO         0xFB08      /* 255,  99,  71 */
+#define COLOR_GOLD           0xFEA0      /* 255, 215,   0 */
+#define COLOR_ORANGE         0xFD20      /* 255, 165,   0 */
+#define COLOR_SNOW           0xFFDF      /* 255, 250, 250 */
+#define COLOR_YELLOW         0xFFE0      /* 255, 255,   0 */
